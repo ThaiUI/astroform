@@ -57,16 +57,16 @@ const { noti } = Astro.props;
       />
     </label>
     <label for='phone'>
-      เบอร์มือถือ 10 หลัก
+      เบอร์มือถือ <span class='text-sm text-gray-600'>10 หลัก ขึ้นต้นด้วยเลข 0</span>
       <input
         type='tel'
         id='phone'
         name='phone'
         inputmode='numeric'
-        pattern='[0-9]{10}'
+        pattern='[0]{1}[0-9]{9}'
         minlength='10'
         maxlength='10'
-        oninvalid="setCustomValidity('กรุณากรอกตัวเลข 10 หลัก')"
+        oninvalid="setCustomValidity('กรุณากรอกตัวเลข 10 หลัก ขึ้นต้นด้วยเลข 0')"
         oninput="setCustomValidity('')"
         required
       />
