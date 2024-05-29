@@ -1,0 +1,93 @@
+---
+interface Props {
+  noti: string;
+}
+const { noti } = Astro.props;
+---
+
+<form method='POST' class='bg-slate-200 p-4 sm:p-5 rounded-md grid sm:grid-cols-2 gap-4 mb-5'>
+  <div class='*:mb-2'>
+    <h1 class='text-2xl font-bold'>ตัวอย่างฟอร์มลงทะเบียน</h1>
+    <p class='pb-3'>
+      กรอกทดสอบได้ แต่เบอร์มือถือห้ามซ้ำ<br />
+      แนะนำให้กรอกข้อมูลจำลอง<br />
+      สำหรับทดสอบระบบเท่านั้น
+    </p>
+    <p>
+      จัดทำโดยโครงการ <a href='https://thaiui.org/' target='_blank'>ThaiUI</a>
+      จาก <a href='https://oseda.or.th/' rel='nofollow noopener noreferrer'>OSEDA</a><br />
+      พัฒนาด้วย <a href='https://astro.build/' target='_blank' rel='nofollow noopener noreferrer'>Astro</a>
+      และ <a href='https://astro.build/db/' target='_blank' rel='nofollow noopener noreferrer'>Astro DB</a>
+    </p>
+    <p>
+      ดาวน์โหลดโค้ดได้ที่ <a
+        href='https://github.com/ThaiUI/astroform'
+        target='_blank'
+        rel='nofollow noopener noreferrer'>GitHub</a
+      >
+    </p>
+  </div>
+  <div class='grid gap-2 leading-relaxed'>
+    {
+      noti && (
+        <div>
+          {noti === 'success' ? (
+            <div class='noti border-green-600 text-green-600'>
+              <h2 class='font-bold mb-1'>ลงทะเบียนสำเร็จ</h2>
+              ขอบคุณที่ร่วมลงทะเบียนทดสอบระบบ
+            </div>
+          ) : (
+            <div class='noti border-red-600 text-red-600'>
+              <h2 class='font-bold mb-1'>ไม่สามารถลงทะเบียนได้</h2>
+              {noti}
+            </div>
+          )}
+        </div>
+      )
+    }
+    <label for='name'>
+      ชื่อผู้ลงทะเบียน
+      <input
+        id='name'
+        name='name'
+        type='text'
+        oninvalid="setCustomValidity('กรุณาระบุชื่อ')"
+        oninput="setCustomValidity('')"
+        required
+      />
+    </label>
+    <label for='phone'>
+      เบอร์มือถือ 10 หลัก
+      <input
+        type='tel'
+        id='phone'
+        name='phone'
+        inputmode='numeric'
+        pattern='[0-9]{10}'
+        minlength='10'
+        maxlength='10'
+        oninvalid="setCustomValidity('กรุณากรอกตัวเลข 10 หลัก')"
+        oninput="setCustomValidity('')"
+        required
+      />
+    </label>
+    <div class='mb-2'>
+      <div>เพศ</div>
+      <div class='flex gap-4 *:flex *:gap-1 *:items-center *:cursor-pointer'>
+        <label
+          ><input
+            type='radio'
+            name='gender'
+            value='male'
+            oninvalid="setCustomValidity('กรุณาระบุเพศ')"
+            oninput="setCustomValidity('')"
+            required
+          />ชาย</label
+        >
+        <label><input type='radio' name='gender' value='female' />หญิง</label>
+        <label><input type='radio' name='gender' value='other' />อื่นๆ</label>
+      </div>
+    </div>
+    <button type='submit'>ลงทะเบียน</button>
+  </div>
+</form>

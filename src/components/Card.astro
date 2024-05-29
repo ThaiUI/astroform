@@ -1,0 +1,37 @@
+---
+interface Props {
+  name: string;
+  phone: string;
+  gender: string;
+  registered: Date;
+}
+const { name, phone, gender, registered } = Astro.props;
+const genderIcon = (gender: string) => {
+  if (gender === 'male') {
+    return '👨🏻';
+  } else if (gender === 'female') {
+    return '👩🏻';
+  } else {
+    return '🏳️‍🌈';
+  }
+};
+const icon = genderIcon(gender);
+---
+
+<div class='flex bg-white shadow rounded-md p-4 gap-4 items-center'>
+  <div class='text-6xl'>
+    {icon}
+  </div>
+  <div>
+    <h3 class='text-xl font-bold'>
+      {name.substring(0, 1).toUpperCase() + '••••' + name.slice(-1).toUpperCase()}
+    </h3>
+    <p>{phone.substring(0, 3) + '••••' + phone.slice(-3)}</p>
+    <small class='text-gray-500'>
+      {registered.toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' })}
+      เวลา
+      {registered.toLocaleTimeString('th-TH', { hour: 'numeric', minute: '2-digit' })}
+      น.
+    </small>
+  </div>
+</div>

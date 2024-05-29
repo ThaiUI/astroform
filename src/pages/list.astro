@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Table from '../components/Table.astro';
+
+import { db, desc, Users } from 'astro:db';
+
+const users = await db.select().from(Users).limit(9999).orderBy(desc(Users.registered));
+---
+
+<Layout title='ลงทะเบียน'>
+  <main>
+    <div class='md:flex md:justify-between md:items-end mb-4'>
+      <h1 class='font-bold text-2xl'>รายชื่อทั้งหมด</h1>
+      <a href='/' class='font-medium'>ลงทะเบียน →</a>
+    </div>
+    <div class='bg-white shadow rounded-md overflow-hidden'>
+      <table class='w-full'>
+        <thead>
+          <tr class='bg-slate-200 *:px-3 *:py-2 *:text-left'>
+            <th>ชื่อ</th>
+            <th>เบอร์โทร</th>
+            <th>เพศ</th>
+            <th>ลงทะเบียนเมื่อ</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((u) => <Table name={u.name} phone={u.phone} gender={u.gender} registered={u.registered} />)}
+        </tbody>
+      </table>
+    </div>
+  </main>
+</Layout>

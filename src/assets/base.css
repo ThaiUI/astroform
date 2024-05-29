@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Noto Sans Thai Variable';
+}
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+textarea {
+  @apply block transition w-full rounded-md border-0 py-1.5 px-2 text-gray-900 leading-6 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-600;
+}
+button:disabled,
+button[disabled] {
+  @apply cursor-not-allowed opacity-60 grayscale;
+}
+button[type='submit'] {
+  @apply py-2 border-none transition px-4 md:px-8 bg-blue-600 hover:bg-sky-500 text-white font-bold rounded-md text-center md:min-w-32;
+}
+
+body {
+  @apply font-sans antialiased bg-slate-100 text-gray-800;
+}
+a {
+  @apply text-blue-800 hover:underline hover:underline-offset-4;
+}
+.container {
+  @apply mx-auto max-w-3xl p-4 lg:p-8;
+}
+.noti {
+  @apply bg-white border-l-4 rounded-md shadow mb-4 px-4 py-3;
+}
