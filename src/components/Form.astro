@@ -74,20 +74,53 @@ const { noti } = Astro.props;
     <div class='mb-2'>
       <div>เพศ</div>
       <div class='flex gap-4 *:flex *:gap-1 *:items-center *:cursor-pointer'>
-        <label
-          ><input
+        <label>
+          <input
+            id='gender'
             type='radio'
             name='gender'
             value='male'
-            oninvalid="setCustomValidity('กรุณาระบุเพศ')"
-            oninput="setCustomValidity('')"
+            oninvalid='this.setCustomValidity("กรุณาระบุเพศ")'
+            onclick='clearValidity()'
             required
-          />ชาย</label
-        >
-        <label><input type='radio' name='gender' value='female' />หญิง</label>
-        <label><input type='radio' name='gender' value='other' />อื่นๆ</label>
+          />
+          ชาย
+        </label>
+        <label>
+          <input type='radio' name='gender' value='female' onclick='clearValidity()' />
+          หญิง
+        </label>
+        <label>
+          <input type='radio' name='gender' value='other' onclick='clearValidity()' />
+          อื่นๆ
+        </label>
       </div>
     </div>
-    <button type='submit'>ลงทะเบียน</button>
+    <button type='submit' class='flex gap-2 items-center justify-center'>
+      ลงทะเบียน
+      <span class='h-4 w-4 animate-spin rounded-full border-b-2 border-current hidden'></span>
+    </button>
   </div>
 </form>
+
+<style>
+  form input {
+    transition: opacity 0.3s;
+  }
+  form.sending input {
+    opacity: 0.5;
+  }
+</style>
+
+<script is:inline>
+  function clearValidity() {
+    document.getElementById('gender').setCustomValidity('');
+  }
+</script>
+<script>
+  document.querySelector('form').addEventListener('submit', (e) => {
+    const form = e.target as HTMLFormElement;
+    form.classList.add('sending');
+    form.querySelector('button span').classList.remove('hidden');
+  });
+</script>
