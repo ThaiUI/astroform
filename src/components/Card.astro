@@ -28,9 +28,16 @@ const icon = genderIcon(gender);
     </h3>
     <p>{phone.substring(0, 3) + '••••' + phone.slice(-3)}</p>
     <small class='text-gray-500'>
-      {registered.toLocaleDateString('th-TH', { year: 'numeric', month: 'short', day: 'numeric' })}
+      {
+        registered.toLocaleDateString('th-TH', {
+          timeZone: 'Asia/Bangkok',
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+        })
+      }
       เวลา
-      {registered.toLocaleTimeString('th-TH', { hour: 'numeric', minute: '2-digit' })}
+      {registered.toLocaleTimeString('th-TH', { timeZone: 'Asia/Bangkok', hour: 'numeric', minute: '2-digit' })}
       น.
     </small>
   </div>
