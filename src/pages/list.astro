@@ -17,10 +17,10 @@ const users = await db.select().from(Users).limit(9999).orderBy(desc(Users.regis
       <table class='w-full'>
         <thead>
           <tr class='bg-slate-200 *:px-3 *:py-2 *:text-left'>
+            <th>เพศ</th>
             <th>ชื่อ</th>
             <th>เบอร์โทร</th>
-            <th>เพศ</th>
-            <th>ลงทะเบียนเมื่อ</th>
+            <th>วันที่ลงทะเบียน</th>
           </tr>
         </thead>
         <tbody>
