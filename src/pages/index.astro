@@ -21,6 +21,6 @@ const users = await db.select().from(Users).limit(4).orderBy(desc(Users.register
     <div class='grid md:grid-cols-2 gap-4 mb-5'>
       {users.map((u) => <Card name={u.name} phone={u.phone} gender={u.gender} registered={u.registered} />)}
     </div>
-    <a href='/list' class='font-medium'>ดูรายชื่อทั้งหมด →</a>
+    <a href='/list' class='font-medium'>ดูรายชื่อทั้งหมด ›</a>
   </main>
 </Layout>

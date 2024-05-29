@@ -23,7 +23,7 @@ body {
   @apply font-sans antialiased bg-slate-100 text-gray-800;
 }
 a {
-  @apply text-blue-800 hover:underline hover:underline-offset-4;
+  @apply text-blue-700 underline decoration-dotted underline-offset-2 hover:text-blue-600 hover:decoration-solid;
 }
 .container {
   @apply mx-auto max-w-3xl p-4 lg:p-8;

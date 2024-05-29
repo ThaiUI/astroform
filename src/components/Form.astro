@@ -5,7 +5,7 @@ interface Props {
 const { noti } = Astro.props;
 ---
 
-<form method='POST' class='bg-slate-200 p-4 sm:p-5 rounded-md grid sm:grid-cols-2 gap-4 mb-5'>
+<form method='POST' class='bg-slate-200 p-4 sm:p-5 rounded-md grid sm:grid-cols-2 gap-4 mb-5 leading-relaxed'>
   <div class='*:mb-2'>
     <h1 class='text-2xl font-bold'>ตัวอย่างฟอร์มลงทะเบียน</h1>
     <p class='pb-3'>
@@ -27,7 +27,7 @@ const { noti } = Astro.props;
       >
     </p>
   </div>
-  <div class='grid gap-2 leading-relaxed'>
+  <div class='grid gap-2'>
     {
       noti && (
         <div>
@@ -103,6 +103,12 @@ const { noti } = Astro.props;
   </div>
 </form>
 
+<script is:inline>
+  function clearValidity() {
+    document.getElementById('gender').setCustomValidity('');
+  }
+</script>
+
 <style>
   form input {
     transition: opacity 0.3s;
@@ -112,11 +118,6 @@ const { noti } = Astro.props;
   }
 </style>
 
-<script is:inline>
-  function clearValidity() {
-    document.getElementById('gender').setCustomValidity('');
-  }
-</script>
 <script>
   document.querySelector('form').addEventListener('submit', (e) => {
     const form = e.target as HTMLFormElement;
