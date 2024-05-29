@@ -1,11 +1,11 @@
 import { db, eq, Users, isDbError } from 'astro:db';
 
 export const register = async (formData: FormData): Promise<string> => {
-  const name = formData.get('name');
-  const phone = formData.get('phone');
-  const gender = formData.get('gender');
+  const name = String(formData.get('name')).trim();
+  const phone = String(formData.get('phone')).trim().replace(/\D/g, '');
+  const gender = String(formData.get('gender')).trim();
 
-  if (typeof name === 'string' && typeof phone === 'string' && typeof gender === 'string') {
+  if (name !== '' && phone.length === 10 && gender !== '') {
     try {
       await db.insert(Users).values({ name, phone, gender });
       return 'success';
