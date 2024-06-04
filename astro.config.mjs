@@ -8,7 +8,8 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [db(), tailwind({ applyBaseStyles: false })],
   output: 'server',
-  adapter: cloudflare({
-    imageService: 'compile',
-  }),
+  image: {
+    service: passthroughImageService(),
+  },
+  adapter: cloudflare(),
 });
