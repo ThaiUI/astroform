@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, passthroughImageService } from 'astro/config';
 import db from '@astrojs/db';
 import cloudflare from '@astrojs/cloudflare';
 
