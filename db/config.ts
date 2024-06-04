@@ -7,6 +7,7 @@ const Users = defineTable({
     gender: column.text(),
     registered: column.date({ default: NOW }),
   },
+  indexes: [{ on: ['registered'] }],
 });
 
 export default defineDb({
